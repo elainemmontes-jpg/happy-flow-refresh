@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VolunteerRouteImport } from './routes/volunteer'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as EventsRouteImport } from './routes/events'
@@ -27,6 +28,11 @@ import { Route as ProgramsGoatRouteImport } from './routes/programs.goat'
 const VolunteerRoute = VolunteerRouteImport.update({
   id: '/volunteer',
   path: '/volunteer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgramsRoute = ProgramsRouteImport.update({
@@ -105,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/events': typeof EventsRoute
   '/login': typeof LoginRoute
   '/programs': typeof ProgramsRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/goat': typeof ProgramsGoatRoute
   '/programs/horse-riding': typeof ProgramsHorseRidingRoute
@@ -120,6 +127,7 @@ export interface FileRoutesByTo {
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
   '/login': typeof LoginRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/goat': typeof ProgramsGoatRoute
   '/programs/horse-riding': typeof ProgramsHorseRidingRoute
@@ -137,6 +145,7 @@ export interface FileRoutesById {
   '/events': typeof EventsRoute
   '/login': typeof LoginRoute
   '/programs': typeof ProgramsRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/goat': typeof ProgramsGoatRoute
   '/programs/horse-riding': typeof ProgramsHorseRidingRoute
@@ -155,6 +164,7 @@ export interface FileRouteTypes {
     | '/events'
     | '/login'
     | '/programs'
+    | '/sitemap.xml'
     | '/volunteer'
     | '/programs/goat'
     | '/programs/horse-riding'
@@ -170,6 +180,7 @@ export interface FileRouteTypes {
     | '/donate'
     | '/events'
     | '/login'
+    | '/sitemap.xml'
     | '/volunteer'
     | '/programs/goat'
     | '/programs/horse-riding'
@@ -186,6 +197,7 @@ export interface FileRouteTypes {
     | '/events'
     | '/login'
     | '/programs'
+    | '/sitemap.xml'
     | '/volunteer'
     | '/programs/goat'
     | '/programs/horse-riding'
@@ -203,6 +215,7 @@ export interface RootRouteChildren {
   EventsRoute: typeof EventsRoute
   LoginRoute: typeof LoginRoute
   ProgramsRoute: typeof ProgramsRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   VolunteerRoute: typeof VolunteerRoute
 }
 
@@ -213,6 +226,13 @@ declare module '@tanstack/react-router' {
       path: '/volunteer'
       fullPath: '/volunteer'
       preLoaderRoute: typeof VolunteerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/programs': {
@@ -338,8 +358,19 @@ const rootRouteChildren: RootRouteChildren = {
   EventsRoute: EventsRoute,
   LoginRoute: LoginRoute,
   ProgramsRoute: ProgramsRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   VolunteerRoute: VolunteerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
