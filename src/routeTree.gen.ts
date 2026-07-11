@@ -9,15 +9,49 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VolunteerRouteImport } from './routes/volunteer'
 import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as EventsRouteImport } from './routes/events'
+import { Route as DonateRouteImport } from './routes/donate'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AnimalsRouteImport } from './routes/animals'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
+import { Route as ProgramsTherapeuticRidingRouteImport } from './routes/programs.therapeutic-riding'
+import { Route as ProgramsRabbitRouteImport } from './routes/programs.rabbit'
+import { Route as ProgramsHorseRidingRouteImport } from './routes/programs.horse-riding'
+import { Route as ProgramsGoatRouteImport } from './routes/programs.goat'
 
+const VolunteerRoute = VolunteerRouteImport.update({
+  id: '/volunteer',
+  path: '/volunteer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgramsRoute = ProgramsRouteImport.update({
   id: '/programs',
   path: '/programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonateRoute = DonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AnimalsRoute = AnimalsRouteImport.update({
@@ -40,18 +74,57 @@ const ProgramsIndexRoute = ProgramsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ProgramsRoute,
 } as any)
+const ProgramsTherapeuticRidingRoute =
+  ProgramsTherapeuticRidingRouteImport.update({
+    id: '/therapeutic-riding',
+    path: '/therapeutic-riding',
+    getParentRoute: () => ProgramsRoute,
+  } as any)
+const ProgramsRabbitRoute = ProgramsRabbitRouteImport.update({
+  id: '/rabbit',
+  path: '/rabbit',
+  getParentRoute: () => ProgramsRoute,
+} as any)
+const ProgramsHorseRidingRoute = ProgramsHorseRidingRouteImport.update({
+  id: '/horse-riding',
+  path: '/horse-riding',
+  getParentRoute: () => ProgramsRoute,
+} as any)
+const ProgramsGoatRoute = ProgramsGoatRouteImport.update({
+  id: '/goat',
+  path: '/goat',
+  getParentRoute: () => ProgramsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/animals': typeof AnimalsRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/events': typeof EventsRoute
+  '/login': typeof LoginRoute
   '/programs': typeof ProgramsRouteWithChildren
+  '/volunteer': typeof VolunteerRoute
+  '/programs/goat': typeof ProgramsGoatRoute
+  '/programs/horse-riding': typeof ProgramsHorseRidingRoute
+  '/programs/rabbit': typeof ProgramsRabbitRoute
+  '/programs/therapeutic-riding': typeof ProgramsTherapeuticRidingRoute
   '/programs/': typeof ProgramsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/animals': typeof AnimalsRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/events': typeof EventsRoute
+  '/login': typeof LoginRoute
+  '/volunteer': typeof VolunteerRoute
+  '/programs/goat': typeof ProgramsGoatRoute
+  '/programs/horse-riding': typeof ProgramsHorseRidingRoute
+  '/programs/rabbit': typeof ProgramsRabbitRoute
+  '/programs/therapeutic-riding': typeof ProgramsTherapeuticRidingRoute
   '/programs': typeof ProgramsIndexRoute
 }
 export interface FileRoutesById {
@@ -59,31 +132,122 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/animals': typeof AnimalsRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/events': typeof EventsRoute
+  '/login': typeof LoginRoute
   '/programs': typeof ProgramsRouteWithChildren
+  '/volunteer': typeof VolunteerRoute
+  '/programs/goat': typeof ProgramsGoatRoute
+  '/programs/horse-riding': typeof ProgramsHorseRidingRoute
+  '/programs/rabbit': typeof ProgramsRabbitRoute
+  '/programs/therapeutic-riding': typeof ProgramsTherapeuticRidingRoute
   '/programs/': typeof ProgramsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/animals' | '/programs' | '/programs/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/animals'
+    | '/contact'
+    | '/donate'
+    | '/events'
+    | '/login'
+    | '/programs'
+    | '/volunteer'
+    | '/programs/goat'
+    | '/programs/horse-riding'
+    | '/programs/rabbit'
+    | '/programs/therapeutic-riding'
+    | '/programs/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/animals' | '/programs'
-  id: '__root__' | '/' | '/about' | '/animals' | '/programs' | '/programs/'
+  to:
+    | '/'
+    | '/about'
+    | '/animals'
+    | '/contact'
+    | '/donate'
+    | '/events'
+    | '/login'
+    | '/volunteer'
+    | '/programs/goat'
+    | '/programs/horse-riding'
+    | '/programs/rabbit'
+    | '/programs/therapeutic-riding'
+    | '/programs'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/animals'
+    | '/contact'
+    | '/donate'
+    | '/events'
+    | '/login'
+    | '/programs'
+    | '/volunteer'
+    | '/programs/goat'
+    | '/programs/horse-riding'
+    | '/programs/rabbit'
+    | '/programs/therapeutic-riding'
+    | '/programs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AnimalsRoute: typeof AnimalsRoute
+  ContactRoute: typeof ContactRoute
+  DonateRoute: typeof DonateRoute
+  EventsRoute: typeof EventsRoute
+  LoginRoute: typeof LoginRoute
   ProgramsRoute: typeof ProgramsRouteWithChildren
+  VolunteerRoute: typeof VolunteerRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/volunteer': {
+      id: '/volunteer'
+      path: '/volunteer'
+      fullPath: '/volunteer'
+      preLoaderRoute: typeof VolunteerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/programs': {
       id: '/programs'
       path: '/programs'
       fullPath: '/programs'
       preLoaderRoute: typeof ProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donate': {
+      id: '/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof DonateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/animals': {
@@ -114,14 +278,50 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsIndexRouteImport
       parentRoute: typeof ProgramsRoute
     }
+    '/programs/therapeutic-riding': {
+      id: '/programs/therapeutic-riding'
+      path: '/therapeutic-riding'
+      fullPath: '/programs/therapeutic-riding'
+      preLoaderRoute: typeof ProgramsTherapeuticRidingRouteImport
+      parentRoute: typeof ProgramsRoute
+    }
+    '/programs/rabbit': {
+      id: '/programs/rabbit'
+      path: '/rabbit'
+      fullPath: '/programs/rabbit'
+      preLoaderRoute: typeof ProgramsRabbitRouteImport
+      parentRoute: typeof ProgramsRoute
+    }
+    '/programs/horse-riding': {
+      id: '/programs/horse-riding'
+      path: '/horse-riding'
+      fullPath: '/programs/horse-riding'
+      preLoaderRoute: typeof ProgramsHorseRidingRouteImport
+      parentRoute: typeof ProgramsRoute
+    }
+    '/programs/goat': {
+      id: '/programs/goat'
+      path: '/goat'
+      fullPath: '/programs/goat'
+      preLoaderRoute: typeof ProgramsGoatRouteImport
+      parentRoute: typeof ProgramsRoute
+    }
   }
 }
 
 interface ProgramsRouteChildren {
+  ProgramsGoatRoute: typeof ProgramsGoatRoute
+  ProgramsHorseRidingRoute: typeof ProgramsHorseRidingRoute
+  ProgramsRabbitRoute: typeof ProgramsRabbitRoute
+  ProgramsTherapeuticRidingRoute: typeof ProgramsTherapeuticRidingRoute
   ProgramsIndexRoute: typeof ProgramsIndexRoute
 }
 
 const ProgramsRouteChildren: ProgramsRouteChildren = {
+  ProgramsGoatRoute: ProgramsGoatRoute,
+  ProgramsHorseRidingRoute: ProgramsHorseRidingRoute,
+  ProgramsRabbitRoute: ProgramsRabbitRoute,
+  ProgramsTherapeuticRidingRoute: ProgramsTherapeuticRidingRoute,
   ProgramsIndexRoute: ProgramsIndexRoute,
 }
 
@@ -133,7 +333,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AnimalsRoute: AnimalsRoute,
+  ContactRoute: ContactRoute,
+  DonateRoute: DonateRoute,
+  EventsRoute: EventsRoute,
+  LoginRoute: LoginRoute,
   ProgramsRoute: ProgramsRouteWithChildren,
+  VolunteerRoute: VolunteerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

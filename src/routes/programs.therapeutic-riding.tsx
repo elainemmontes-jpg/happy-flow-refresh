@@ -9,7 +9,6 @@ export const Route = createFileRoute("/programs/therapeutic-riding")({
       { name: "description", content: "Adaptive equine-assisted sessions supporting physical, cognitive, and emotional growth." },
       { property: "og:title", content: "Therapeutic Riding Program" },
       { property: "og:description", content: "Adaptive horse-based therapy at The Community Farm." },
-      { property: "og:image", content: "/og-therapeutic-riding.jpg" },
     ],
   }),
   component: TherapeuticRiding,
