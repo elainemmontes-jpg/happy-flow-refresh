@@ -70,7 +70,7 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <Link to="/login" onClick={() => setOpen(false)} className="py-1 hover:text-farm-earth">
+            <Link to={member ? "/member" : "/login"} onClick={() => setOpen(false)} className="py-1 hover:text-farm-earth">
               {member ? "My Dashboard" : "Member Login"}
             </Link>
           </div>
