@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/site/PageShell";
+import { SponsorVolunteer } from "@/components/site/SponsorVolunteer";
 import programCritters from "@/assets/program-critters.jpg";
 
 export const Route = createFileRoute("/programs/rabbit")({
@@ -22,6 +23,7 @@ function Rabbits() {
         <img src={programCritters} alt="Farm rabbit" loading="lazy" className="w-full rounded-2xl aspect-[4/3] object-cover mb-10" />
         <p className="text-lg text-farm-ink/80 leading-relaxed">Weekly small-group sessions cover safe handling, grooming, feeding, and habitat care.</p>
       </section>
+      <SponsorVolunteer />
     </PageShell>
   );
 }

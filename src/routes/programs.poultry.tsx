@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/site/PageShell";
+import { SponsorVolunteer } from "@/components/site/SponsorVolunteer";
 import programPoultry from "@/assets/program-poultry.jpg";
 
 export const Route = createFileRoute("/programs/poultry")({
@@ -29,6 +30,7 @@ function Poultry() {
           <p>A great fit for families, homeschool groups, and anyone curious about small-flock stewardship.</p>
         </div>
       </section>
+      <SponsorVolunteer />
     </PageShell>
   );
 }
