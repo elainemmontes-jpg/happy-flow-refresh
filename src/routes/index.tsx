@@ -86,9 +86,9 @@ function Index() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { img: programHorse, to: "/programs/therapeutic-riding" as const, title: "Therapeutic Riding", copy: "Building confidence and physical strength through adaptive equine connections." },
-              { img: programCritters, to: "/programs/goat" as const, title: "Goats & Rabbits", copy: "Educational sessions with our resident goats and rabbits for budding animal lovers." },
-              { img: programGarden, to: "/programs/horse-riding" as const, title: "Horse Riding Program", copy: "From first lessons to seasoned riders — instruction rooted in horsemanship." },
+              { img: programHorse, to: "/programs/horse" as const, title: "Horse Programs", copy: "Riding lessons, horsemanship, and adaptive therapeutic riding for every level." },
+              { img: programCritters, to: "/programs/goat" as const, title: "Goat Programs", copy: "Care and handling sessions with our herd of Nigerian Dwarf goats." },
+              { img: programGarden, to: "/programs/poultry" as const, title: "Poultry Programs", copy: "Daily chores and coop stewardship with our heritage flock of chickens and ducks." },
             ].map((p) => (
               <Link to={p.to} key={p.title} className="group">
                 <div className="w-full aspect-[4/5] rounded-xl mb-6 overflow-hidden outline outline-1 -outline-offset-1 outline-black/5">

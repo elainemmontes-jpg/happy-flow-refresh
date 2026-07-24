@@ -20,9 +20,9 @@ import { Route as AnimalsRouteImport } from './routes/animals'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
-import { Route as ProgramsTherapeuticRidingRouteImport } from './routes/programs.therapeutic-riding'
 import { Route as ProgramsRabbitRouteImport } from './routes/programs.rabbit'
-import { Route as ProgramsHorseRidingRouteImport } from './routes/programs.horse-riding'
+import { Route as ProgramsPoultryRouteImport } from './routes/programs.poultry'
+import { Route as ProgramsHorseRouteImport } from './routes/programs.horse'
 import { Route as ProgramsGoatRouteImport } from './routes/programs.goat'
 
 const VolunteerRoute = VolunteerRouteImport.update({
@@ -80,20 +80,19 @@ const ProgramsIndexRoute = ProgramsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ProgramsRoute,
 } as any)
-const ProgramsTherapeuticRidingRoute =
-  ProgramsTherapeuticRidingRouteImport.update({
-    id: '/therapeutic-riding',
-    path: '/therapeutic-riding',
-    getParentRoute: () => ProgramsRoute,
-  } as any)
 const ProgramsRabbitRoute = ProgramsRabbitRouteImport.update({
   id: '/rabbit',
   path: '/rabbit',
   getParentRoute: () => ProgramsRoute,
 } as any)
-const ProgramsHorseRidingRoute = ProgramsHorseRidingRouteImport.update({
-  id: '/horse-riding',
-  path: '/horse-riding',
+const ProgramsPoultryRoute = ProgramsPoultryRouteImport.update({
+  id: '/poultry',
+  path: '/poultry',
+  getParentRoute: () => ProgramsRoute,
+} as any)
+const ProgramsHorseRoute = ProgramsHorseRouteImport.update({
+  id: '/horse',
+  path: '/horse',
   getParentRoute: () => ProgramsRoute,
 } as any)
 const ProgramsGoatRoute = ProgramsGoatRouteImport.update({
@@ -114,9 +113,9 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/goat': typeof ProgramsGoatRoute
-  '/programs/horse-riding': typeof ProgramsHorseRidingRoute
+  '/programs/horse': typeof ProgramsHorseRoute
+  '/programs/poultry': typeof ProgramsPoultryRoute
   '/programs/rabbit': typeof ProgramsRabbitRoute
-  '/programs/therapeutic-riding': typeof ProgramsTherapeuticRidingRoute
   '/programs/': typeof ProgramsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -130,9 +129,9 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/goat': typeof ProgramsGoatRoute
-  '/programs/horse-riding': typeof ProgramsHorseRidingRoute
+  '/programs/horse': typeof ProgramsHorseRoute
+  '/programs/poultry': typeof ProgramsPoultryRoute
   '/programs/rabbit': typeof ProgramsRabbitRoute
-  '/programs/therapeutic-riding': typeof ProgramsTherapeuticRidingRoute
   '/programs': typeof ProgramsIndexRoute
 }
 export interface FileRoutesById {
@@ -148,9 +147,9 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/goat': typeof ProgramsGoatRoute
-  '/programs/horse-riding': typeof ProgramsHorseRidingRoute
+  '/programs/horse': typeof ProgramsHorseRoute
+  '/programs/poultry': typeof ProgramsPoultryRoute
   '/programs/rabbit': typeof ProgramsRabbitRoute
-  '/programs/therapeutic-riding': typeof ProgramsTherapeuticRidingRoute
   '/programs/': typeof ProgramsIndexRoute
 }
 export interface FileRouteTypes {
@@ -167,9 +166,9 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/volunteer'
     | '/programs/goat'
-    | '/programs/horse-riding'
+    | '/programs/horse'
+    | '/programs/poultry'
     | '/programs/rabbit'
-    | '/programs/therapeutic-riding'
     | '/programs/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -183,9 +182,9 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/volunteer'
     | '/programs/goat'
-    | '/programs/horse-riding'
+    | '/programs/horse'
+    | '/programs/poultry'
     | '/programs/rabbit'
-    | '/programs/therapeutic-riding'
     | '/programs'
   id:
     | '__root__'
@@ -200,9 +199,9 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/volunteer'
     | '/programs/goat'
-    | '/programs/horse-riding'
+    | '/programs/horse'
+    | '/programs/poultry'
     | '/programs/rabbit'
-    | '/programs/therapeutic-riding'
     | '/programs/'
   fileRoutesById: FileRoutesById
 }
@@ -298,13 +297,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsIndexRouteImport
       parentRoute: typeof ProgramsRoute
     }
-    '/programs/therapeutic-riding': {
-      id: '/programs/therapeutic-riding'
-      path: '/therapeutic-riding'
-      fullPath: '/programs/therapeutic-riding'
-      preLoaderRoute: typeof ProgramsTherapeuticRidingRouteImport
-      parentRoute: typeof ProgramsRoute
-    }
     '/programs/rabbit': {
       id: '/programs/rabbit'
       path: '/rabbit'
@@ -312,11 +304,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsRabbitRouteImport
       parentRoute: typeof ProgramsRoute
     }
-    '/programs/horse-riding': {
-      id: '/programs/horse-riding'
-      path: '/horse-riding'
-      fullPath: '/programs/horse-riding'
-      preLoaderRoute: typeof ProgramsHorseRidingRouteImport
+    '/programs/poultry': {
+      id: '/programs/poultry'
+      path: '/poultry'
+      fullPath: '/programs/poultry'
+      preLoaderRoute: typeof ProgramsPoultryRouteImport
+      parentRoute: typeof ProgramsRoute
+    }
+    '/programs/horse': {
+      id: '/programs/horse'
+      path: '/horse'
+      fullPath: '/programs/horse'
+      preLoaderRoute: typeof ProgramsHorseRouteImport
       parentRoute: typeof ProgramsRoute
     }
     '/programs/goat': {
@@ -331,17 +330,17 @@ declare module '@tanstack/react-router' {
 
 interface ProgramsRouteChildren {
   ProgramsGoatRoute: typeof ProgramsGoatRoute
-  ProgramsHorseRidingRoute: typeof ProgramsHorseRidingRoute
+  ProgramsHorseRoute: typeof ProgramsHorseRoute
+  ProgramsPoultryRoute: typeof ProgramsPoultryRoute
   ProgramsRabbitRoute: typeof ProgramsRabbitRoute
-  ProgramsTherapeuticRidingRoute: typeof ProgramsTherapeuticRidingRoute
   ProgramsIndexRoute: typeof ProgramsIndexRoute
 }
 
 const ProgramsRouteChildren: ProgramsRouteChildren = {
   ProgramsGoatRoute: ProgramsGoatRoute,
-  ProgramsHorseRidingRoute: ProgramsHorseRidingRoute,
+  ProgramsHorseRoute: ProgramsHorseRoute,
+  ProgramsPoultryRoute: ProgramsPoultryRoute,
   ProgramsRabbitRoute: ProgramsRabbitRoute,
-  ProgramsTherapeuticRidingRoute: ProgramsTherapeuticRidingRoute,
   ProgramsIndexRoute: ProgramsIndexRoute,
 }
 
@@ -364,13 +363,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

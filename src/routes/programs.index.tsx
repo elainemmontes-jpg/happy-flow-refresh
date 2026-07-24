@@ -2,25 +2,25 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/site/PageShell";
 import programHorse from "@/assets/program-horse.jpg";
 import programCritters from "@/assets/program-critters.jpg";
-import therapeuticRiding from "@/assets/therapeutic-riding.jpg";
+import programPoultry from "@/assets/program-poultry.jpg";
 
 export const Route = createFileRoute("/programs/")({
   head: () => ({
     meta: [
       { title: "Farm Programs — The Community Farm" },
-      { name: "description", content: "Horse riding, therapeutic riding, goat, and rabbit programs at The Community Farm." },
+      { name: "description", content: "Horse, goat, poultry, and rabbit programs at The Community Farm." },
       { property: "og:title", content: "Farm Programs" },
-      { property: "og:description", content: "Explore our horse, therapeutic riding, goat, and rabbit programs." },
+      { property: "og:description", content: "Explore our horse, goat, poultry, and rabbit programs." },
     ],
   }),
   component: ProgramsIndex,
 });
 
 const programs = [
-  { to: "/programs/horse-riding" as const, title: "Horse Riding Program", img: programHorse, copy: "Group and private lessons for riders of every level, taught by certified instructors." },
-  { to: "/programs/therapeutic-riding" as const, title: "Therapeutic Riding Program", img: therapeuticRiding, copy: "Adaptive equine-assisted sessions supporting physical, cognitive, and emotional growth." },
-  { to: "/programs/goat" as const, title: "Goat Program", img: programCritters, copy: "Care, handling, and learning with our herd of Nigerian Dwarf goats." },
-  { to: "/programs/rabbit" as const, title: "Rabbit Program", img: programCritters, copy: "A gentle entry point for young children — daily care and handling of our rabbits." },
+  { to: "/programs/horse" as const, title: "Horse Programs", img: programHorse, copy: "Riding lessons, horsemanship, and adaptive therapeutic riding — taught by certified instructors." },
+  { to: "/programs/goat" as const, title: "Goat Programs", img: programCritters, copy: "Care, handling, and learning with our herd of Nigerian Dwarf goats." },
+  { to: "/programs/poultry" as const, title: "Poultry Programs", img: programPoultry, copy: "Daily chores, egg collection, and coop stewardship with our heritage flock." },
+  { to: "/programs/rabbit" as const, title: "Rabbit Programs", img: programCritters, copy: "A gentle entry point for young children — daily care and handling of our rabbits." },
 ];
 
 function ProgramsIndex() {
