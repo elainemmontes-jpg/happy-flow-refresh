@@ -21,6 +21,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
 import { Route as ProgramsRabbitRouteImport } from './routes/programs.rabbit'
+import { Route as ProgramsPoultryRouteImport } from './routes/programs.poultry'
 import { Route as ProgramsHorseRouteImport } from './routes/programs.horse'
 import { Route as ProgramsGoatRouteImport } from './routes/programs.goat'
 
@@ -84,6 +85,11 @@ const ProgramsRabbitRoute = ProgramsRabbitRouteImport.update({
   path: '/rabbit',
   getParentRoute: () => ProgramsRoute,
 } as any)
+const ProgramsPoultryRoute = ProgramsPoultryRouteImport.update({
+  id: '/poultry',
+  path: '/poultry',
+  getParentRoute: () => ProgramsRoute,
+} as any)
 const ProgramsHorseRoute = ProgramsHorseRouteImport.update({
   id: '/horse',
   path: '/horse',
@@ -108,6 +114,7 @@ export interface FileRoutesByFullPath {
   '/volunteer': typeof VolunteerRoute
   '/programs/goat': typeof ProgramsGoatRoute
   '/programs/horse': typeof ProgramsHorseRoute
+  '/programs/poultry': typeof ProgramsPoultryRoute
   '/programs/rabbit': typeof ProgramsRabbitRoute
   '/programs/': typeof ProgramsIndexRoute
 }
@@ -123,6 +130,7 @@ export interface FileRoutesByTo {
   '/volunteer': typeof VolunteerRoute
   '/programs/goat': typeof ProgramsGoatRoute
   '/programs/horse': typeof ProgramsHorseRoute
+  '/programs/poultry': typeof ProgramsPoultryRoute
   '/programs/rabbit': typeof ProgramsRabbitRoute
   '/programs': typeof ProgramsIndexRoute
 }
@@ -140,6 +148,7 @@ export interface FileRoutesById {
   '/volunteer': typeof VolunteerRoute
   '/programs/goat': typeof ProgramsGoatRoute
   '/programs/horse': typeof ProgramsHorseRoute
+  '/programs/poultry': typeof ProgramsPoultryRoute
   '/programs/rabbit': typeof ProgramsRabbitRoute
   '/programs/': typeof ProgramsIndexRoute
 }
@@ -158,6 +167,7 @@ export interface FileRouteTypes {
     | '/volunteer'
     | '/programs/goat'
     | '/programs/horse'
+    | '/programs/poultry'
     | '/programs/rabbit'
     | '/programs/'
   fileRoutesByTo: FileRoutesByTo
@@ -173,6 +183,7 @@ export interface FileRouteTypes {
     | '/volunteer'
     | '/programs/goat'
     | '/programs/horse'
+    | '/programs/poultry'
     | '/programs/rabbit'
     | '/programs'
   id:
@@ -189,6 +200,7 @@ export interface FileRouteTypes {
     | '/volunteer'
     | '/programs/goat'
     | '/programs/horse'
+    | '/programs/poultry'
     | '/programs/rabbit'
     | '/programs/'
   fileRoutesById: FileRoutesById
@@ -292,6 +304,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsRabbitRouteImport
       parentRoute: typeof ProgramsRoute
     }
+    '/programs/poultry': {
+      id: '/programs/poultry'
+      path: '/poultry'
+      fullPath: '/programs/poultry'
+      preLoaderRoute: typeof ProgramsPoultryRouteImport
+      parentRoute: typeof ProgramsRoute
+    }
     '/programs/horse': {
       id: '/programs/horse'
       path: '/horse'
@@ -312,6 +331,7 @@ declare module '@tanstack/react-router' {
 interface ProgramsRouteChildren {
   ProgramsGoatRoute: typeof ProgramsGoatRoute
   ProgramsHorseRoute: typeof ProgramsHorseRoute
+  ProgramsPoultryRoute: typeof ProgramsPoultryRoute
   ProgramsRabbitRoute: typeof ProgramsRabbitRoute
   ProgramsIndexRoute: typeof ProgramsIndexRoute
 }
@@ -319,6 +339,7 @@ interface ProgramsRouteChildren {
 const ProgramsRouteChildren: ProgramsRouteChildren = {
   ProgramsGoatRoute: ProgramsGoatRoute,
   ProgramsHorseRoute: ProgramsHorseRoute,
+  ProgramsPoultryRoute: ProgramsPoultryRoute,
   ProgramsRabbitRoute: ProgramsRabbitRoute,
   ProgramsIndexRoute: ProgramsIndexRoute,
 }
