@@ -20,10 +20,10 @@ export function Footer() {
         <div>
           <h5 className="font-bold text-xs uppercase tracking-widest mb-6 text-farm-ink">Programs</h5>
           <ul className="space-y-3 text-sm text-farm-ink/70">
-            <li><Link to="/programs/horse-riding" className="hover:text-farm-earth">Horse Riding</Link></li>
-            <li><Link to="/programs/therapeutic-riding" className="hover:text-farm-earth">Therapeutic Riding</Link></li>
-            <li><Link to="/programs/goat" className="hover:text-farm-earth">Goat Program</Link></li>
-            <li><Link to="/programs/rabbit" className="hover:text-farm-earth">Rabbit Program</Link></li>
+            <li><Link to="/programs/horse" className="hover:text-farm-earth">Horse Programs</Link></li>
+            <li><Link to="/programs/goat" className="hover:text-farm-earth">Goat Programs</Link></li>
+            <li><Link to="/programs/poultry" className="hover:text-farm-earth">Poultry Programs</Link></li>
+            <li><Link to="/programs/rabbit" className="hover:text-farm-earth">Rabbit Programs</Link></li>
           </ul>
         </div>
         <div>
