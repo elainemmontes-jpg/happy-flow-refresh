@@ -29,7 +29,6 @@ export function Footer() {
           <h5 className="font-bold text-xs uppercase tracking-widest mb-6 text-farm-ink">Get Involved</h5>
           <ul className="space-y-3 text-sm text-farm-ink/70">
             <li><Link to="/volunteer" className="hover:text-farm-earth">Volunteer</Link></li>
-            <li><Link to="/events" className="hover:text-farm-earth">Events</Link></li>
             <li><Link to="/donate" className="hover:text-farm-earth">Donate</Link></li>
             <li><Link to="/contact" className="hover:text-farm-earth">Contact</Link></li>
           </ul>
