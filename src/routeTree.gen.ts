@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VolunteerRouteImport } from './routes/volunteer'
+import { Route as TcfWaiverRouteImport } from './routes/tcf-waiver'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as LoginRouteImport } from './routes/login'
@@ -28,6 +29,11 @@ import { Route as ProgramsGoatRouteImport } from './routes/programs.goat'
 const VolunteerRoute = VolunteerRouteImport.update({
   id: '/volunteer',
   path: '/volunteer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TcfWaiverRoute = TcfWaiverRouteImport.update({
+  id: '/tcf-waiver',
+  path: '/tcf-waiver',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -111,6 +117,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/programs': typeof ProgramsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tcf-waiver': typeof TcfWaiverRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/goat': typeof ProgramsGoatRoute
   '/programs/horse': typeof ProgramsHorseRoute
@@ -127,6 +134,7 @@ export interface FileRoutesByTo {
   '/events': typeof EventsRoute
   '/login': typeof LoginRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tcf-waiver': typeof TcfWaiverRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/goat': typeof ProgramsGoatRoute
   '/programs/horse': typeof ProgramsHorseRoute
@@ -145,6 +153,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/programs': typeof ProgramsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tcf-waiver': typeof TcfWaiverRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/goat': typeof ProgramsGoatRoute
   '/programs/horse': typeof ProgramsHorseRoute
@@ -164,6 +173,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/programs'
     | '/sitemap.xml'
+    | '/tcf-waiver'
     | '/volunteer'
     | '/programs/goat'
     | '/programs/horse'
@@ -180,6 +190,7 @@ export interface FileRouteTypes {
     | '/events'
     | '/login'
     | '/sitemap.xml'
+    | '/tcf-waiver'
     | '/volunteer'
     | '/programs/goat'
     | '/programs/horse'
@@ -197,6 +208,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/programs'
     | '/sitemap.xml'
+    | '/tcf-waiver'
     | '/volunteer'
     | '/programs/goat'
     | '/programs/horse'
@@ -215,6 +227,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   ProgramsRoute: typeof ProgramsRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TcfWaiverRoute: typeof TcfWaiverRoute
   VolunteerRoute: typeof VolunteerRoute
 }
 
@@ -225,6 +238,13 @@ declare module '@tanstack/react-router' {
       path: '/volunteer'
       fullPath: '/volunteer'
       preLoaderRoute: typeof VolunteerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tcf-waiver': {
+      id: '/tcf-waiver'
+      path: '/tcf-waiver'
+      fullPath: '/tcf-waiver'
+      preLoaderRoute: typeof TcfWaiverRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -358,6 +378,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   ProgramsRoute: ProgramsRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TcfWaiverRoute: TcfWaiverRoute,
   VolunteerRoute: VolunteerRoute,
 }
 export const routeTree = rootRouteImport
