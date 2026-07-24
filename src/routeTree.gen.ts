@@ -14,6 +14,7 @@ import { Route as TcfWaiverRouteImport } from './routes/tcf-waiver'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as MemberRouteImport } from './routes/member'
+import { Route as MeetTheHorsesRouteImport } from './routes/meet-the-horses'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as DonateRouteImport } from './routes/donate'
@@ -51,6 +52,11 @@ const ProgramsRoute = ProgramsRouteImport.update({
 const MemberRoute = MemberRouteImport.update({
   id: '/member',
   path: '/member',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeetTheHorsesRoute = MeetTheHorsesRouteImport.update({
+  id: '/meet-the-horses',
+  path: '/meet-the-horses',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -127,6 +133,7 @@ export interface FileRoutesByFullPath {
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
   '/login': typeof LoginRoute
+  '/meet-the-horses': typeof MeetTheHorsesRoute
   '/member': typeof MemberRouteWithChildren
   '/programs': typeof ProgramsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -147,6 +154,7 @@ export interface FileRoutesByTo {
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
   '/login': typeof LoginRoute
+  '/meet-the-horses': typeof MeetTheHorsesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tcf-waiver': typeof TcfWaiverRoute
   '/volunteer': typeof VolunteerRoute
@@ -166,6 +174,7 @@ export interface FileRoutesById {
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
   '/login': typeof LoginRoute
+  '/meet-the-horses': typeof MeetTheHorsesRoute
   '/member': typeof MemberRouteWithChildren
   '/programs': typeof ProgramsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -188,6 +197,7 @@ export interface FileRouteTypes {
     | '/donate'
     | '/events'
     | '/login'
+    | '/meet-the-horses'
     | '/member'
     | '/programs'
     | '/sitemap.xml'
@@ -208,6 +218,7 @@ export interface FileRouteTypes {
     | '/donate'
     | '/events'
     | '/login'
+    | '/meet-the-horses'
     | '/sitemap.xml'
     | '/tcf-waiver'
     | '/volunteer'
@@ -226,6 +237,7 @@ export interface FileRouteTypes {
     | '/donate'
     | '/events'
     | '/login'
+    | '/meet-the-horses'
     | '/member'
     | '/programs'
     | '/sitemap.xml'
@@ -247,6 +259,7 @@ export interface RootRouteChildren {
   DonateRoute: typeof DonateRoute
   EventsRoute: typeof EventsRoute
   LoginRoute: typeof LoginRoute
+  MeetTheHorsesRoute: typeof MeetTheHorsesRoute
   MemberRoute: typeof MemberRouteWithChildren
   ProgramsRoute: typeof ProgramsRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -289,6 +302,13 @@ declare module '@tanstack/react-router' {
       path: '/member'
       fullPath: '/member'
       preLoaderRoute: typeof MemberRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meet-the-horses': {
+      id: '/meet-the-horses'
+      path: '/meet-the-horses'
+      fullPath: '/meet-the-horses'
+      preLoaderRoute: typeof MeetTheHorsesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -424,6 +444,7 @@ const rootRouteChildren: RootRouteChildren = {
   DonateRoute: DonateRoute,
   EventsRoute: EventsRoute,
   LoginRoute: LoginRoute,
+  MeetTheHorsesRoute: MeetTheHorsesRoute,
   MemberRoute: MemberRouteWithChildren,
   ProgramsRoute: ProgramsRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
