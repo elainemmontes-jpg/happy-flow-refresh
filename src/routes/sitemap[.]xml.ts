@@ -20,6 +20,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           "/events",
           "/donate",
           "/contact",
+          "/tcf-waiver",
         ];
         const urls = paths.map(
           (p) =>
