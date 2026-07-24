@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useMember } from "@/lib/mockAuth";
 
 const nav = [
   { to: "/about", label: "About" },
@@ -13,6 +14,7 @@ const nav = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const { member } = useMember();
   return (
     <nav className="sticky top-0 z-50 bg-farm-cream/90 backdrop-blur-md border-b border-farm-ink/5">
       <div className="max-w-7xl mx-auto px-6 py-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
@@ -35,10 +37,10 @@ export function Header() {
         </div>
         <div className="flex items-center gap-3 shrink-0">
           <Link
-            to="/login"
+            to={member ? "/member" : "/login"}
             className="hidden sm:inline-flex text-xs font-semibold uppercase tracking-widest px-4 py-2 border border-farm-ink/15 rounded-full hover:bg-farm-ink hover:text-farm-cream transition-all"
           >
-            Member Login
+            {member ? "My Dashboard" : "Member Login"}
           </Link>
           <Link
             to="/donate"
@@ -68,8 +70,8 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <Link to="/login" onClick={() => setOpen(false)} className="py-1 hover:text-farm-earth">
-              Member Login
+            <Link to={member ? "/member" : "/login"} onClick={() => setOpen(false)} className="py-1 hover:text-farm-earth">
+              {member ? "My Dashboard" : "Member Login"}
             </Link>
           </div>
         </div>

@@ -13,6 +13,7 @@ import { Route as VolunteerRouteImport } from './routes/volunteer'
 import { Route as TcfWaiverRouteImport } from './routes/tcf-waiver'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as MemberRouteImport } from './routes/member'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as DonateRouteImport } from './routes/donate'
@@ -21,6 +22,7 @@ import { Route as AnimalsRouteImport } from './routes/animals'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
+import { Route as MemberIndexRouteImport } from './routes/member.index'
 import { Route as ProgramsRabbitRouteImport } from './routes/programs.rabbit'
 import { Route as ProgramsPoultryRouteImport } from './routes/programs.poultry'
 import { Route as ProgramsHorseRouteImport } from './routes/programs.horse'
@@ -44,6 +46,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const ProgramsRoute = ProgramsRouteImport.update({
   id: '/programs',
   path: '/programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemberRoute = MemberRouteImport.update({
+  id: '/member',
+  path: '/member',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -86,6 +93,11 @@ const ProgramsIndexRoute = ProgramsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ProgramsRoute,
 } as any)
+const MemberIndexRoute = MemberIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MemberRoute,
+} as any)
 const ProgramsRabbitRoute = ProgramsRabbitRouteImport.update({
   id: '/rabbit',
   path: '/rabbit',
@@ -115,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
   '/login': typeof LoginRoute
+  '/member': typeof MemberRouteWithChildren
   '/programs': typeof ProgramsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tcf-waiver': typeof TcfWaiverRoute
@@ -123,6 +136,7 @@ export interface FileRoutesByFullPath {
   '/programs/horse': typeof ProgramsHorseRoute
   '/programs/poultry': typeof ProgramsPoultryRoute
   '/programs/rabbit': typeof ProgramsRabbitRoute
+  '/member/': typeof MemberIndexRoute
   '/programs/': typeof ProgramsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -140,6 +154,7 @@ export interface FileRoutesByTo {
   '/programs/horse': typeof ProgramsHorseRoute
   '/programs/poultry': typeof ProgramsPoultryRoute
   '/programs/rabbit': typeof ProgramsRabbitRoute
+  '/member': typeof MemberIndexRoute
   '/programs': typeof ProgramsIndexRoute
 }
 export interface FileRoutesById {
@@ -151,6 +166,7 @@ export interface FileRoutesById {
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
   '/login': typeof LoginRoute
+  '/member': typeof MemberRouteWithChildren
   '/programs': typeof ProgramsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tcf-waiver': typeof TcfWaiverRoute
@@ -159,6 +175,7 @@ export interface FileRoutesById {
   '/programs/horse': typeof ProgramsHorseRoute
   '/programs/poultry': typeof ProgramsPoultryRoute
   '/programs/rabbit': typeof ProgramsRabbitRoute
+  '/member/': typeof MemberIndexRoute
   '/programs/': typeof ProgramsIndexRoute
 }
 export interface FileRouteTypes {
@@ -171,6 +188,7 @@ export interface FileRouteTypes {
     | '/donate'
     | '/events'
     | '/login'
+    | '/member'
     | '/programs'
     | '/sitemap.xml'
     | '/tcf-waiver'
@@ -179,6 +197,7 @@ export interface FileRouteTypes {
     | '/programs/horse'
     | '/programs/poultry'
     | '/programs/rabbit'
+    | '/member/'
     | '/programs/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -196,6 +215,7 @@ export interface FileRouteTypes {
     | '/programs/horse'
     | '/programs/poultry'
     | '/programs/rabbit'
+    | '/member'
     | '/programs'
   id:
     | '__root__'
@@ -206,6 +226,7 @@ export interface FileRouteTypes {
     | '/donate'
     | '/events'
     | '/login'
+    | '/member'
     | '/programs'
     | '/sitemap.xml'
     | '/tcf-waiver'
@@ -214,6 +235,7 @@ export interface FileRouteTypes {
     | '/programs/horse'
     | '/programs/poultry'
     | '/programs/rabbit'
+    | '/member/'
     | '/programs/'
   fileRoutesById: FileRoutesById
 }
@@ -225,6 +247,7 @@ export interface RootRouteChildren {
   DonateRoute: typeof DonateRoute
   EventsRoute: typeof EventsRoute
   LoginRoute: typeof LoginRoute
+  MemberRoute: typeof MemberRouteWithChildren
   ProgramsRoute: typeof ProgramsRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TcfWaiverRoute: typeof TcfWaiverRoute
@@ -259,6 +282,13 @@ declare module '@tanstack/react-router' {
       path: '/programs'
       fullPath: '/programs'
       preLoaderRoute: typeof ProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/member': {
+      id: '/member'
+      path: '/member'
+      fullPath: '/member'
+      preLoaderRoute: typeof MemberRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -317,6 +347,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsIndexRouteImport
       parentRoute: typeof ProgramsRoute
     }
+    '/member/': {
+      id: '/member/'
+      path: '/'
+      fullPath: '/member/'
+      preLoaderRoute: typeof MemberIndexRouteImport
+      parentRoute: typeof MemberRoute
+    }
     '/programs/rabbit': {
       id: '/programs/rabbit'
       path: '/rabbit'
@@ -348,6 +385,17 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface MemberRouteChildren {
+  MemberIndexRoute: typeof MemberIndexRoute
+}
+
+const MemberRouteChildren: MemberRouteChildren = {
+  MemberIndexRoute: MemberIndexRoute,
+}
+
+const MemberRouteWithChildren =
+  MemberRoute._addFileChildren(MemberRouteChildren)
+
 interface ProgramsRouteChildren {
   ProgramsGoatRoute: typeof ProgramsGoatRoute
   ProgramsHorseRoute: typeof ProgramsHorseRoute
@@ -376,6 +424,7 @@ const rootRouteChildren: RootRouteChildren = {
   DonateRoute: DonateRoute,
   EventsRoute: EventsRoute,
   LoginRoute: LoginRoute,
+  MemberRoute: MemberRouteWithChildren,
   ProgramsRoute: ProgramsRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TcfWaiverRoute: TcfWaiverRoute,
