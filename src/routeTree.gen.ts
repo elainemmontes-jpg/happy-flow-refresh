@@ -21,6 +21,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
 import { Route as ProgramsRabbitRouteImport } from './routes/programs.rabbit'
+import { Route as ProgramsHorseRouteImport } from './routes/programs.horse'
 import { Route as ProgramsGoatRouteImport } from './routes/programs.goat'
 
 const VolunteerRoute = VolunteerRouteImport.update({
@@ -83,6 +84,11 @@ const ProgramsRabbitRoute = ProgramsRabbitRouteImport.update({
   path: '/rabbit',
   getParentRoute: () => ProgramsRoute,
 } as any)
+const ProgramsHorseRoute = ProgramsHorseRouteImport.update({
+  id: '/horse',
+  path: '/horse',
+  getParentRoute: () => ProgramsRoute,
+} as any)
 const ProgramsGoatRoute = ProgramsGoatRouteImport.update({
   id: '/goat',
   path: '/goat',
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/goat': typeof ProgramsGoatRoute
+  '/programs/horse': typeof ProgramsHorseRoute
   '/programs/rabbit': typeof ProgramsRabbitRoute
   '/programs/': typeof ProgramsIndexRoute
 }
@@ -115,6 +122,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/goat': typeof ProgramsGoatRoute
+  '/programs/horse': typeof ProgramsHorseRoute
   '/programs/rabbit': typeof ProgramsRabbitRoute
   '/programs': typeof ProgramsIndexRoute
 }
@@ -131,6 +139,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/goat': typeof ProgramsGoatRoute
+  '/programs/horse': typeof ProgramsHorseRoute
   '/programs/rabbit': typeof ProgramsRabbitRoute
   '/programs/': typeof ProgramsIndexRoute
 }
@@ -148,6 +157,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/volunteer'
     | '/programs/goat'
+    | '/programs/horse'
     | '/programs/rabbit'
     | '/programs/'
   fileRoutesByTo: FileRoutesByTo
@@ -162,6 +172,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/volunteer'
     | '/programs/goat'
+    | '/programs/horse'
     | '/programs/rabbit'
     | '/programs'
   id:
@@ -177,6 +188,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/volunteer'
     | '/programs/goat'
+    | '/programs/horse'
     | '/programs/rabbit'
     | '/programs/'
   fileRoutesById: FileRoutesById
@@ -280,6 +292,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsRabbitRouteImport
       parentRoute: typeof ProgramsRoute
     }
+    '/programs/horse': {
+      id: '/programs/horse'
+      path: '/horse'
+      fullPath: '/programs/horse'
+      preLoaderRoute: typeof ProgramsHorseRouteImport
+      parentRoute: typeof ProgramsRoute
+    }
     '/programs/goat': {
       id: '/programs/goat'
       path: '/goat'
@@ -292,12 +311,14 @@ declare module '@tanstack/react-router' {
 
 interface ProgramsRouteChildren {
   ProgramsGoatRoute: typeof ProgramsGoatRoute
+  ProgramsHorseRoute: typeof ProgramsHorseRoute
   ProgramsRabbitRoute: typeof ProgramsRabbitRoute
   ProgramsIndexRoute: typeof ProgramsIndexRoute
 }
 
 const ProgramsRouteChildren: ProgramsRouteChildren = {
   ProgramsGoatRoute: ProgramsGoatRoute,
+  ProgramsHorseRoute: ProgramsHorseRoute,
   ProgramsRabbitRoute: ProgramsRabbitRoute,
   ProgramsIndexRoute: ProgramsIndexRoute,
 }
