@@ -23,7 +23,7 @@ function Horse() {
       <PageHero
         eyebrow="Program"
         title={<>Horse <span className="italic text-farm-earth">Programs</span></>}
-        intro="From the first time in the saddle to seasoned rider — group lessons, private instruction, and adaptive therapeutic riding, rooted in horsemanship, safety, and trust."
+        intro="From the first time in the saddle to seasoned rider — horse leases, private instruction, and adaptive therapeutic riding, rooted in horsemanship, safety, and trust."
       />
       <section className="px-6 py-16">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
@@ -32,7 +32,7 @@ function Horse() {
             <div>
               <h3 className="font-display text-2xl mb-2">Riding Lessons</h3>
               <ul className="space-y-2 text-farm-ink/80 list-disc pl-5">
-                <li>Weekly group or private lessons</li>
+                <li>Flexible, private lessons</li>
                 <li>All safety equipment provided</li>
                 <li>Progress tracking through certified instructors</li>
                 <li>Optional participation in seasonal events</li>
@@ -49,8 +49,9 @@ function Horse() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
           <div className="space-y-6 order-2 md:order-1">
             <h3 className="font-display text-3xl">Therapeutic Riding</h3>
-            <p className="text-farm-ink/80 leading-relaxed">Adaptive equine-assisted sessions designed with families, therapists, and certified instructors — supporting physical, cognitive, and emotional growth. Each rider is paired with a horse and a small team of trained volunteers.</p>
-            <p className="text-farm-ink/80 leading-relaxed">Financial assistance is available. No family is turned away for inability to pay.</p>
+            <p className="text-farm-ink/80 leading-relaxed">Adaptive equine-assisted sessions designed with families, therapists, and certified instructors — supporting physical, cognitive, and emotional growth. </p>
+            <p className="text-farm-ink/80 leading-relaxed">
+            </p>
             <a href="/contact" className="inline-block px-6 py-3 bg-farm-green text-farm-cream font-semibold rounded-lg">Enroll or ask a question</a>
           </div>
           <img src={therapeuticRiding} alt="Therapeutic riding session" loading="lazy" className="rounded-2xl w-full aspect-[4/3] object-cover order-1 md:order-2" />
