@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/site/PageShell";
+import { SponsorVolunteer } from "@/components/site/SponsorVolunteer";
 import programHorse from "@/assets/program-horse.jpg";
 import therapeuticRiding from "@/assets/therapeutic-riding.jpg";
 
@@ -54,6 +56,28 @@ function Horse() {
           <img src={therapeuticRiding} alt="Therapeutic riding session" loading="lazy" className="rounded-2xl w-full aspect-[4/3] object-cover order-1 md:order-2" />
         </div>
       </section>
+      <section className="px-6 py-16">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <img src={programHorse} alt="Horse being led at the farm" loading="lazy" className="rounded-2xl w-full aspect-[4/3] object-cover" />
+          <div className="space-y-6">
+            <p className="text-xs uppercase tracking-widest font-bold text-farm-earth">Membership</p>
+            <h3 className="font-display text-3xl">Lease a Horse</h3>
+            <p className="text-farm-ink/80 leading-relaxed">
+              Full and half-lease options give experienced riders their own dedicated partner without the full cost of ownership.
+              Leases include scheduled ride days, feed and board, and access to farm instructors.
+            </p>
+            <ul className="space-y-2 text-farm-ink/80 list-disc pl-5">
+              <li>Half lease: 3 days/week</li>
+              <li>Full lease: unlimited scheduled use</li>
+              <li>Monthly grooming and tack care clinics included</li>
+            </ul>
+            <Link to="/meet-the-horses" className="inline-block px-6 py-3 bg-farm-earth text-farm-cream font-semibold rounded-lg">
+              Meet the Horses
+            </Link>
+          </div>
+        </div>
+      </section>
+      <SponsorVolunteer />
     </PageShell>
   );
 }
