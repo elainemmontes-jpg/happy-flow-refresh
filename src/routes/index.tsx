@@ -23,7 +23,7 @@ function Index() {
             </h1>
             <p className="text-lg text-farm-ink/70 mb-8 max-w-md leading-relaxed">
               A community oasis for therapeutic riding, animal leasing, volunteer stewardship,
-              and educational programs — rooted in responsible care of the land.
+              and educational programs - rooted in responsible care of the land.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -111,7 +111,7 @@ function Index() {
             {[
               { to: "/programs" as const, title: "Lease an Animal", copy: "Partner with a specific horse or program animal and share in their daily care.", cta: "Learn More", hover: "hover:bg-farm-earth" },
               { to: "/volunteer" as const, title: "Volunteer", copy: "From barn chores to event planning, your time makes a real difference.", cta: "Sign Up", hover: "hover:bg-farm-green" },
-              { to: "/programs" as const, title: "Run a Program", copy: "Members can host their own educational programs on the farm.", cta: "Get Started", hover: "hover:bg-farm-earth" },
+              { to: "/programs" as const, title: "Join a Program", copy: "Participants can enroll in structured programs that build confidence, skill, and responsibility.", cta: "Get Started", hover: "hover:bg-farm-earth" },
               { to: "/donate" as const, title: "Donate", copy: "Support feed, veterinary care, and scholarships for therapeutic riders.", cta: "Give Today", hover: "hover:bg-farm-green" },
             ].map((b) => (
               <Link to={b.to} key={b.title} className={`p-12 border border-farm-cream/10 flex flex-col justify-between aspect-square group transition-colors duration-300 ${b.hover}`}>
